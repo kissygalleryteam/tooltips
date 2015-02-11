@@ -1,1 +1,1 @@
-KISSY.add("kg/tooltips/1.0.0/lib/main",["node","base"],function(i,n,e,a){var o=(n("node").all,n("base"));a.exports=o.extend({initializer:function(){}},{ATTRS:{}})});
+KISSY.add("kg/tooltips/1.0.1/lib/main",["node","base"],function(i,n,e,a){var o=(n("node").all,n("base"));a.exports=o.extend({initializer:function(){}},{ATTRS:{}})});

@@ -1,4 +1,4 @@
-KISSY.add('kg/tooltips/1.0.0/index',["node","base","event"],function(S ,require, exports, module) {
+KISSY.add('kg/tooltips/1.0.1/index',["node","base","event"],function(S ,require, exports, module) {
  var $ = require('node').all;
 var Base = require('base');
 var Event = require('event');
