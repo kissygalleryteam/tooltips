@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>tooltips</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com-prettify.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdn.staticfile.org/prettify/r298/prettify.min.js"></script>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed-min.js" data-config="{combine:true}"></script>
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div id="header"><a href="http://docs.kissyui.com/" class="logo">kissy</a>
+      <nav><a href="http://docs.kissyui.com/1.4/docs/html/coms.html">优秀组件推荐</a></nav>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul data-spy="affix" data-offset-top="0" class="nav nav-list bs-docs-sidenav"></ul>
+        </div>
+        <div class="span9 bs-docs-content">
+          <h1 data-id="undefined" class="title">tooltips</h1>
+          <p class="author-wrapper"><span>组件有问题？旺旺联系作者：</span><a href="https://github.com/hellfire" target="_blank" data-name="业炎" class="author"><img src="https://avatars.githubusercontent.com/u/7992020?v=3&amp;s=60" alt="业炎"></a><span class="author-name">业炎</span>
+          </p>
+          <div class="common-link"><a href="../demo/index.html" target="_blank" class="demo">示例</a><a href="https://github.com/kissygalleryteam/tooltips" target="_blank" class="source">源码</a></div>
+          <p class="com-info"><span class="info-label">View</span><span data-com="tooltips" class="J_View">3</span></p>
+          <p class="com-info"><span class="info-label">所属分类</span><a href="http://kpm.taobao.net/list/UI">UI</a><span class="info-label tag-label">组件标签</span><a href="http://kpm.taobao.net/list/tag?tag=tooltip">tooltip</a><a href="http://kpm.taobao.net/list/tag?tag=提示">提示</a>
+          </p>
+          <p class="com-info"><span class="info-label">kissy版本</span><span>1.4.X</span>
+          </p><h2 id="-">综述</h2>
+<p>tooltips是一款轻量级的提示组件，配置简单，容易调用。支持click和hover两种事件。
+<img src="http://gtms02.alicdn.com/tps/i2/TB1DApgHXXXXXbOXXXXFvIM3VXX-434-180.png" alt="image"></p>
+<h2 id="-html-">依赖的HTML结构</h2>
+<pre><code class="lang-html">&lt;div data-width=&quot;300&quot; data-height=&quot;100&quot; data-placement=&quot;right&quot;  data-event=&quot;click&quot; id=&quot;J_TooltipsClickRight&quot;  type=&quot;button&quot;&gt;Tooltips Right &lt;/div&gt;
+</code></pre>
+<p><strong>配置参数说明</strong>：</p>
+<ul>
+<li>data-width:      tooltip的宽度。</li>
+<li>data-height:     tooltip的高度。</li>
+<li>data-placement:  tooltip显示的方位，可选值为：top, right, bottom, left。即支持上、右、下、左四个方位。</li>
+<li>data-event:      tooltip支持的诗句类型，可选值为: click, mouseover。即支持点击和鼠标hover两种事件。</li>
+<li>id:              钩子，这个必须进行指定</li>
+</ul>
+<h2 id="-">初始化组件</h2>
+<pre><code class="lang-javascript">    var tooltipsClickRight = new Tooltips({
+        target: &#39;#J_TooltipClickRight&#39;,
+        tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+    });
+</code></pre>
+<p>-</p>
+<h2 id="api-">API说明</h2>
+<p><strong>外部可以调用的API</strong>:</p>
+<ul>
+<li>render():   调用render()可以进行tooltip的渲染。</li>
+<li>show(msg):  传入你希望显示的信息，调用show()方法可以更改html里配置的提示内容。</li>
+<li>hide():     隐藏tooltip。</li>
+</ul>
+<p><strong>私有API</strong>:</p>
+<ul>
+<li>_setPosition():  设置tooltip的显示位置，采用相对定位。</li>
+</ul>
+<h2 id="-demo">调用Demo</h2>
+<pre><code class="lang-html">    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot;&gt;
+            &lt;h4 class=&quot;panel-title&quot;&gt;click 模式下的&lt;/h4&gt;
+            &lt;p&gt;&lt;/p&gt;
+        &lt;/div&gt;&lt;!-- panel-heading --&gt;
+        &lt;div class=&quot;panel-body&quot;&gt;
+
+            &lt;div class=&quot;tooltips-click&quot;&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot; data-placement=&quot;right&quot;  data-event=&quot;click&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsClickRight&quot;  type=&quot;button&quot;&gt;Tooltips Right &lt;/button&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot; data-placement=&quot;left&quot;   data-event=&quot;click&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsClickLeft&quot;   type=&quot;button&quot;&gt;Tooltips Left  &lt;/button&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot; data-placement=&quot;top&quot;    data-event=&quot;click&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsClickTop&quot;    type=&quot;button&quot;&gt;Tooltips Top   &lt;/button&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot; data-placement=&quot;bottom&quot; data-event=&quot;click&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsClickBottom&quot; type=&quot;button&quot;&gt;Tooltips Bottom&lt;/button&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot;&gt;
+            &lt;h4 class=&quot;panel-title&quot;&gt;hover 模式下的&lt;/h4&gt;
+            &lt;p&gt;&lt;/p&gt;
+        &lt;/div&gt;&lt;!-- panel-heading --&gt;
+        &lt;div class=&quot;panel-body&quot;&gt;
+
+            &lt;div class=&quot;tooltips-mouseover&quot;&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot;  data-placement=&quot;right&quot;  data-event=&quot;mouseover&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsHoverRight&quot;  type=&quot;button&quot;&gt;Tooltips Right &lt;/button&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot;  data-placement=&quot;left&quot;   data-event=&quot;mouseover&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsHoverLeft&quot;   type=&quot;button&quot;&gt;Tooltips Left  &lt;/button&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot;  data-placement=&quot;top&quot;    data-event=&quot;mouseover&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsHoverTop&quot;    type=&quot;button&quot;&gt;Tooltips Top   &lt;/button&gt;
+                &lt;button data-width=&quot;160&quot; data-height=&quot;60&quot;  data-placement=&quot;bottom&quot; data-event=&quot;mouseover&quot; class=&quot;btn btn-default&quot; id=&quot;J_TooltipsHoverBottom&quot; type=&quot;button&quot;&gt;Tooltips Bottom&lt;/button&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+<pre><code class="lang-javascript">    S.use(&#39;kg/tooltips/1.0.0/index, kg/tooltips/1.0.0/index.css&#39;, function (S, Tooltips) {
+        // 点击， 提示消息出现在右边
+        var tooltipsClickRight = new Tooltips({
+            target: &#39;#J_TooltipsClickRight&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsClickRight.render();
+
+        // 点击， 提示消息出现在右边
+        var tooltipsClickLeft = new Tooltips({
+            target: &#39;#J_TooltipsClickLeft&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsClickLeft.render();
+
+        var tooltipClickTop = new Tooltips({
+            target: &#39;#J_TooltipsClickTop&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsClickTop.render();
+
+        var tooltipClickBottom = new Tooltips({
+            target: &#39;#J_TooltipsClickBottom&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsClickBottom.render();
+
+        var tooltipHoverRight = new Tooltips({
+            target: &#39;#J_TooltipsHoverRight&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsHoverRight.render();
+
+        var tooltipHoverLeft = new Tooltips({
+            target: &#39;#J_TooltipsHoverLeft&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsHoverLeft.render();
+
+        var tooltipHoverTop = new Tooltips({
+            target: &#39;#J_TooltipsHoverTop&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsHoverTop.render();
+
+        var tooltipHoverBottom = new Tooltips({
+            target: &#39;#J_TooltipsHoverBottom&#39;,
+            tpl: &#39;&lt;div class=&quot;tooltip&quot;&gt;&lt;div class=&quot;tooltip-arrow J_Arrow&quot;&gt;&lt;/div&gt;&lt;div class=&quot;tooltip-content&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&lt;/div&gt;&lt;/div&gt;&#39;
+        });
+        tooltipsHoverBottom.render();
+    })
+</code></pre>
+<h2 id="-issue">关于issue</h2>
+<p>如果有更好的建议，欢迎随时拍砖，帮助我们一起完善VC组件。</p>
+<h2 id="changelog">changelog</h2>
+<h3 id="v1-0-0">V1.0.0</h3>
+<pre><code>[!] 完成基本功能。
+    使用缓存，如果页面上已经存在tooltip，则不进行重复创建
+    允许创建tooltip arrow
+    美化tooltip，支持用户自己编写skin
+</code></pre>
+          <div style="display:none;"><script type="text/javascript" src="http://tajs.qq.com/stats?sId=36378479" charset="UTF-8"></script></div>
+          <script src="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
